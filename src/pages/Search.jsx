@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import Loading from './Loading';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Search extends Component {
   constructor() {
     super();
     this.state = {
       nameSearch: '',
+      nameSaved: '',
+      loadingSearch: false,
+      allAlbums: [],
     };
   }
 
@@ -17,9 +23,45 @@ class Search extends Component {
     });
   }
 
-  render() {
+  onSearchAlbuns = async () => {
     const { nameSearch } = this.state;
+    this.setState({ loadingSearch: true, nameSaved: nameSearch });
+    const albums = await searchAlbumsAPI(nameSearch);
+    this.setState({ loadingSearch: false, allAlbums: albums, nameSearch: '' });
+    console.log(albums);
+  };
+
+  createAlbum = () => {
+    const { allAlbums } = this.state;
+    if (allAlbums.length === 0) return <h2>Nenhum álbum foi encontrado</h2>;
+    return (
+      <div>
+        <div className="container-albums">
+
+          {
+            allAlbums.map((element) => (
+              <Link
+                data-testid={ `link-to-album-${element.collectionId}` }
+                key={ element.collectionId }
+                to={ `/album/${element.collectionId}` }
+              >
+                <div className="card-album">
+                  <p>{element.collectionName}</p>
+                  <img src={ element.artworkUrl100 } alt="" />
+                </div>
+
+              </Link>
+            ))
+          }
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    const { nameSearch, loadingSearch, nameSaved } = this.state;
     const MINLENGTH = 1;
+    if (loadingSearch) return <Loading />;
     return (
       <div data-testid="page-search">
         <Header />
@@ -35,9 +77,12 @@ class Search extends Component {
             type="submit"
             data-testid="search-artist-button"
             disabled={ nameSearch.length <= MINLENGTH }
+            onClick={ this.onSearchAlbuns }
           >
             Procurar
           </button>
+          <h1>{`Resultado de álbuns de: ${nameSaved}`}</h1>
+          <div>{ this.createAlbum() }</div>
         </div>
       </div>
     );

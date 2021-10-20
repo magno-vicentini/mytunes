@@ -1,0 +1,17 @@
+.container-albums {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-album {
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: center;
+  margin: 10px;
+  padding: 5px;
+  width: 250px;
+}
