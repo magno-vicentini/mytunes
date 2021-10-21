@@ -28,10 +28,10 @@ addFavoriteSong = async () => {
 
 turnChecked = async () => {
   const { checked } = this.state;
-  const { track, deleteSavedSong } = this.props;
+  const { track } = this.props;
   if (checked) {
     await removeSong(track);
-    await deleteSavedSong();
+    // await deleteSavedSong();
     return this.setState({ checked: false });
   }
   this.setState({ checked: true });
@@ -82,7 +82,7 @@ MusicCard.propTypes = {
     PropTypes.object,
     PropTypes.bool,
     PropTypes.number])).isRequired,
-  deleteSavedSong: PropTypes.func.isRequired,
+  // deleteSavedSong: PropTypes.func.isRequired,
 };
 
 export default MusicCard;
