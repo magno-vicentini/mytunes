@@ -19,21 +19,21 @@
 
 .card-artist {
   align-items: center;
+  background-color: black;
   border: solid 10px black;
   border-radius: 25px;
-  background-color: black;
   color: white;
   display: flex;
   flex-direction: column;
-  margin: 10px;
   height: 300px;
+  margin: 10px;
   width: 200px;
 }
 
 .image-artist {
+  border-radius: 50%;
   height: 150px;
   width: 150px;
-  border-radius: 50%;
 }
 
 .card-music {
