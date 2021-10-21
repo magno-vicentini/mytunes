@@ -28,9 +28,10 @@ addFavoriteSong = async () => {
 
 turnChecked = async () => {
   const { checked } = this.state;
-  const { track } = this.props;
+  const { track, deleteSavedSong } = this.props;
   if (checked) {
     await removeSong(track);
+    await deleteSavedSong();
     return this.setState({ checked: false });
   }
   this.setState({ checked: true });
@@ -51,19 +52,21 @@ render() {
           <code>audio</code>
           .
         </audio>
-        <label htmlFor="favorites-musics">
+
+        <label htmlFor={ trackName }>
           Favorita
           <input
             data-testid={ `checkbox-music-${trackId}` }
             type="checkbox"
-            name="checked"
+            name={ trackName }
             checked={ checked }
             onChange={ this.turnChecked }
-            id="favorites-musics"
+            id={ trackName }
             onClick={ this.addFavoriteSong }
           />
 
         </label>
+
       </div>
     </div>
   );
@@ -79,6 +82,7 @@ MusicCard.propTypes = {
     PropTypes.object,
     PropTypes.bool,
     PropTypes.number])).isRequired,
+  deleteSavedSong: PropTypes.func.isRequired,
 };
 
 export default MusicCard;
