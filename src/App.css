@@ -9,9 +9,45 @@
   border-radius: 25px;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   height: 250px;
   justify-content: center;
   margin: 10px;
   padding: 5px;
   width: 250px;
+}
+
+.card-artist {
+  align-items: center;
+  border: solid 10px black;
+  border-radius: 25px;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  height: 300px;
+  width: 200px;
+}
+
+.image-artist {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+.card-music {
+  display: flex;
+  justify-content: center;
+}
+
+.track-example {
+  align-items: center;
+  background-color: rgb(75, 74, 74);
+  border: 10px solid black;
+  border-radius: 25px;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px;
 }
