@@ -60,10 +60,9 @@ class Favorites extends Component {
 }
 
 Favorites.propTypes = {
-  location: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.bool,
-    PropTypes.number])).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
 };
 
 export default Favorites;
