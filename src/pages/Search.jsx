@@ -32,8 +32,9 @@ class Search extends Component {
   };
 
   createAlbum = () => {
-    const { allAlbums } = this.state;
+    const { allAlbums, loadingSearch } = this.state;
     if (allAlbums.length === 0) return <h2>Nenhum álbum foi encontrado</h2>;
+    if (loadingSearch) return <Loading />;
     return (
       <div>
         <div className="container-albums">

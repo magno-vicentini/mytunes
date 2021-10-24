@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import MusicCard from '../components/MusicCard';
@@ -10,16 +11,11 @@ class Favorites extends Component {
     this.state = {
       tracks: [],
       loadingSongs: false,
-      savedTracks: [],
     };
   }
 
   componentDidMount() {
     this.allFavoriteSongs();
-  }
-
-  componentDidUpdate() {
-    console.log('carregou novamente');
   }
 
   allFavoriteSongs = async () => {
@@ -28,14 +24,14 @@ class Favorites extends Component {
     this.setState({
       tracks: [...favSongs],
       loadingSongs: false,
-      savedTracks: [...favSongs],
     });
   }
 
   render() {
-    const { loadingSongs, tracks, savedTracks } = this.state;
+    const { loadingSongs, tracks } = this.state;
+    const { location: { pathname } } = this.props;
     if (loadingSongs) return <Loading />;
-    console.log(tracks);
+    // console.log(tracks);
     return (
       <div data-testid="page-favorites">
         <Header />
@@ -48,8 +44,10 @@ class Favorites extends Component {
                 <MusicCard
                   key={ track.trackId }
                   track={ track }
-                  savedTracks={ savedTracks }
+                  savedTracks={ tracks }
                   deleteSavedSong={ this.allFavoriteSongs }
+                  pathname={ pathname }
+                  callbackParent={ () => this.allFavoriteSongs() }
                 />
               ))
             }
@@ -60,5 +58,12 @@ class Favorites extends Component {
     );
   }
 }
+
+Favorites.propTypes = {
+  location: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.bool,
+    PropTypes.number])).isRequired,
+};
 
 export default Favorites;
