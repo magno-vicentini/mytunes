@@ -38,7 +38,7 @@ turnChecked = async () => {
     await removeSong(track);
     const { callbackParent, pathname } = this.props;
     if (pathname === '/favorites') callbackParent();
-    return this.setState({ checked: false });
+    return this.setState({ checked: false, loadingFavorite: false });
   }
   await this.addFavoriteSong();
 }
