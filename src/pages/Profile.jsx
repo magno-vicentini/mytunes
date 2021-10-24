@@ -1,35 +1,36 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-import { getUser } from '../services/userAPI';
-import Loading from './Loading';
+// import { getUser } from '../services/userAPI';
+// import Loading from './Loading';
 
 class Profile extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loadingProfile: false,
-      profile: [],
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     loadingProfile: false,
+  //     profile: [],
+  //   };
+  // }
 
-  componentDidMount() {
-    this.getUserProfile();
-  }
+  // componentDidMount() {
+  //   this.getUserProfile();
+  // }
 
-  getUserProfile = async () => {
-    this.setState({ loadingProfile: true });
-    const user = await getUser();
-    this.setState({ loadingProfile: false, profile: user });
-  }
+  // getUserProfile = async () => {
+  //   this.setState({ loadingProfile: true });
+  //   const user = await getUser();
+  //   this.setState({ loadingProfile: false, profile: user });
+  // }
 
   render() {
-    const { loadingProfile, profile: { name, image } } = this.state;
-    if (loadingProfile) return <Loading />;
+    // const { loadingProfile, profile: { name, image } } = this.state;
+    // if (loadingProfile) return <Loading />;
     return (
       <div data-testid="page-profile">
         <Header />
-        <div>
+        <div>Profile</div>
+        {/* <div>
           <div>
             <img data-testid="profile-image" src={ image } alt="" />
             <Link to="/profile/edit">
@@ -44,7 +45,7 @@ class Profile extends Component {
             E-mail:
             <p>{`${name}@trybetunes.com`}</p>
           </label>
-        </div>
+        </div> */}
       </div>
     );
   }
