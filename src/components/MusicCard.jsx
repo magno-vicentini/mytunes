@@ -29,8 +29,9 @@ addFavoriteSong = async () => {
 turnChecked = async () => {
   const { checked } = this.state;
   const { track } = this.props;
-  this.setState({ loadingFavorite: true });
+  if (checked === false) await this.addFavoriteSong();
   if (checked) {
+    this.setState({ loadingFavorite: true });
     await removeSong(track);
     const { callbackParent, pathname } = this.props;
     if (pathname === '/favorites') callbackParent();
@@ -62,9 +63,8 @@ render() {
             type="checkbox"
             name={ trackName }
             checked={ checked }
-            onChange={ this.turnChecked }
             id={ trackName }
-            onClick={ this.addFavoriteSong }
+            onChange={ this.turnChecked }
           />
 
         </label>
