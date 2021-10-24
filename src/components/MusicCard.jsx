@@ -17,7 +17,7 @@ class MusicCard extends Component {
     if (savedTracks.find((song) => song.trackName === track.trackName)) {
       this.turnChecked();
     }
-    console.log(this.props);
+    // console.log(this.props);
   }
 
 addFavoriteSong = async () => {
