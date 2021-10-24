@@ -12,7 +12,7 @@ class Album extends Component {
     this.state = {
       tracks: [],
       savedTracks: [],
-      loadingTracks: false,
+      loadingTracks: true,
     };
   }
 
@@ -36,10 +36,10 @@ class Album extends Component {
 
   render() {
     const { tracks, loadingTracks, savedTracks } = this.state;
-    if (tracks.length === 0) return <Loading />;
+    // if (tracks.length === 0) return <Loading />;
     if (loadingTracks) return <Loading />;
-    console.log(tracks);
-    console.log(savedTracks);
+    // console.log(tracks);
+    // console.log(savedTracks);
     return (
       <div data-testid="page-album">
         <Header />

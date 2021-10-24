@@ -17,7 +17,6 @@ class MusicCard extends Component {
     if (savedTracks.find((song) => song.trackName === track.trackName)) {
       this.turnChecked();
     }
-    // console.log(this.props);
   }
 
 addFavoriteSong = async () => {
@@ -30,13 +29,14 @@ addFavoriteSong = async () => {
 turnChecked = async () => {
   const { checked } = this.state;
   const { track } = this.props;
+  this.setState({ loadingFavorite: true });
   if (checked) {
     await removeSong(track);
     const { callbackParent, pathname } = this.props;
     if (pathname === '/favorites') callbackParent();
-    return this.setState({ checked: false });
+    return this.setState({ checked: false, loadingFavorite: false });
   }
-  this.setState({ checked: true });
+  this.setState({ checked: true, loadingFavorite: false });
 }
 
 render() {
@@ -84,8 +84,12 @@ MusicCard.propTypes = {
     PropTypes.object,
     PropTypes.bool,
     PropTypes.number])).isRequired,
-  pathname: PropTypes.string.isRequired,
-  callbackParent: PropTypes.func.isRequired,
+  pathname: PropTypes.string,
+  callbackParent: PropTypes.func,
+};
+MusicCard.defaultProps = {
+  pathname: undefined,
+  callbackParent: undefined,
 };
 
 export default MusicCard;

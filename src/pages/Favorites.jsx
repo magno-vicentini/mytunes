@@ -10,7 +10,7 @@ class Favorites extends Component {
     super();
     this.state = {
       tracks: [],
-      loadingSongs: false,
+      loadingSongs: true,
     };
   }
 
@@ -31,7 +31,6 @@ class Favorites extends Component {
     const { loadingSongs, tracks } = this.state;
     const { location: { pathname } } = this.props;
     if (loadingSongs) return <Loading />;
-    // console.log(tracks);
     return (
       <div data-testid="page-favorites">
         <Header />

@@ -8,7 +8,7 @@ class Header extends Component {
     super();
     this.state = {
       user: '',
-      loadingUser: false,
+      loadingUser: true,
     };
   }
 
@@ -17,7 +17,6 @@ class Header extends Component {
   }
 
   user = async () => {
-    this.setState({ loadingUser: true });
     const user = await getUser();
     this.setState({ user: user.name, loadingUser: false });
   }

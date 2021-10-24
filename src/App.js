@@ -19,7 +19,7 @@ class App extends React.Component {
           <Route path="/album/:id" render={ (props) => <Album { ...props } /> } />
           <Route path="/favorites" render={ (props) => <Favorites { ...props } /> } />
           <Route exact path="/profile"><Profile /></Route>
-          <Route path="/profile/edit"><ProfileEdit /></Route>
+          <Route exact path="/profile/edit"><ProfileEdit /></Route>
           <Route path="*"><NotFound /></Route>
         </Switch>
       </BrowserRouter>

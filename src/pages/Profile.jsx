@@ -1,40 +1,46 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-// import { getUser } from '../services/userAPI';
-// import Loading from './Loading';
+import { getUser } from '../services/userAPI';
+import Loading from './Loading';
 
 class Profile extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     loadingProfile: false,
-  //     profile: [],
-  //   };
-  // }
+  constructor() {
+    super();
+    this.state = {
+      loadingProfile: true,
+      profile: [],
+    };
+  }
 
-  // componentDidMount() {
-  //   this.getUserProfile();
-  // }
+  componentDidMount() {
+    this.getUserProfile();
+  }
 
-  // getUserProfile = async () => {
-  //   this.setState({ loadingProfile: true });
-  //   const user = await getUser();
-  //   this.setState({ loadingProfile: false, profile: user });
-  // }
+  getUserProfile = async () => {
+    const user = await getUser();
+    this.setState({ loadingProfile: false, profile: user });
+    console.log(user);
+  }
 
   render() {
-    // const { loadingProfile, profile: { name, image } } = this.state;
-    // if (loadingProfile) return <Loading />;
+    const { loadingProfile, profile: { name, image, description, email } } = this.state;
+    if (loadingProfile) {
+      return (
+        <div>
+          <Header />
+          <Loading />
+        </div>
+      );
+    }
     return (
       <div data-testid="page-profile">
         <Header />
-        <div>Profile</div>
-        {/* <div>
+        <div>
           <div>
             <img data-testid="profile-image" src={ image } alt="" />
             <Link to="/profile/edit">
-              <button type="submit">Editar Perfil</button>
+              <button type="button">Editar perfil</button>
             </Link>
           </div>
           <label htmlFor="name">
@@ -43,9 +49,13 @@ class Profile extends Component {
           </label>
           <label htmlFor="email">
             E-mail:
-            <p>{`${name}@trybetunes.com`}</p>
+            <p>{`${email}@trybetunes.com`}</p>
           </label>
-        </div> */}
+          <label htmlFor="description">
+            Descrição:
+            <p id="description">{`Descrição: ${description}`}</p>
+          </label>
+        </div>
       </div>
     );
   }
