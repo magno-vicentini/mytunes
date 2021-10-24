@@ -15,7 +15,7 @@ class MusicCard extends Component {
   componentDidMount() {
     const { track, savedTracks } = this.props;
     if (savedTracks.find((song) => song.trackName === track.trackName)) {
-      this.turnChecked();
+      this.turnFavChecked();
     }
   }
 
@@ -23,21 +23,24 @@ addFavoriteSong = async () => {
   const { track } = this.props;
   this.setState({ loadingFavorite: true });
   await addSong(track);
-  this.setState({ loadingFavorite: false });
+  this.setState({ checked: true, loadingFavorite: false });
+}
+
+turnFavChecked = () => {
+  this.setState({ checked: true });
 }
 
 turnChecked = async () => {
   const { checked } = this.state;
   const { track } = this.props;
-  if (checked === false) await this.addFavoriteSong();
   if (checked) {
     this.setState({ loadingFavorite: true });
     await removeSong(track);
     const { callbackParent, pathname } = this.props;
     if (pathname === '/favorites') callbackParent();
-    return this.setState({ checked: false, loadingFavorite: false });
+    return this.setState({ checked: false });
   }
-  this.setState({ checked: true, loadingFavorite: false });
+  await this.addFavoriteSong();
 }
 
 render() {

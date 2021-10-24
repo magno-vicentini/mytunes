@@ -10,7 +10,7 @@ class Favorites extends Component {
     super();
     this.state = {
       tracks: [],
-      loadingSongs: true,
+      loadingSongs: false,
     };
   }
 
@@ -44,7 +44,6 @@ class Favorites extends Component {
                   key={ track.trackId }
                   track={ track }
                   savedTracks={ tracks }
-                  deleteSavedSong={ this.allFavoriteSongs }
                   pathname={ pathname }
                   callbackParent={ () => this.allFavoriteSongs() }
                 />
