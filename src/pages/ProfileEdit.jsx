@@ -68,7 +68,6 @@ class ProfileEdit extends Component {
       descriptionUser,
       imageUser,
     } = this.state;
-    // const testEmail = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
     if (!nameUser || !descriptionUser || !imageUser) return true;
     if (/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/.test(emailUser)) return false;
     return true;
