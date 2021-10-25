@@ -40,7 +40,6 @@ class Profile extends Component {
     return (
       <div data-testid="page-profile">
         <Header />
-        { name }
         <div className="profile-card">
           <label htmlFor="nameUser">
             Nome

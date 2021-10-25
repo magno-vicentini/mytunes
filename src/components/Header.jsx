@@ -29,7 +29,8 @@ class Header extends Component {
       <header data-testid="header-component">
         <div>
           <h1>TrybeTunes</h1>
-          <p data-testid="header-user-name">{`Bem Vindo: ${user}`}</p>
+          <span>Bem vindo: </span>
+          <span data-testid="header-user-name">{user}</span>
           <div>
             <Link to="/search" data-testid="link-to-search">Search </Link>
             <Link to="/favorites" data-testid="link-to-favorites">Favorites </Link>
