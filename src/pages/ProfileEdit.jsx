@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 import Header from '../components/Header';
-import { getUser } from '../services/userAPI';
+import { getUser, updateUser } from '../services/userAPI';
 import Loading from './Loading';
 
 class ProfileEdit extends Component {
   constructor() {
     super();
     this.state = {
-      loadingPorfileEdit: false,
-      userEdit: [],
+      loadingPorfileEdit: true,
       nameUser: '',
       emailUser: '',
       descriptionUser: '',
       imageUser: '',
+      redirect: false,
     };
   }
 
@@ -29,9 +30,35 @@ class ProfileEdit extends Component {
   }
 
   getUserProfileEdit = async () => {
-    this.setState({ loadingPorfileEdit: true });
     const user = await getUser();
-    this.setState({ loadingPorfileEdit: false, userEdit: user });
+    this.setState(
+      {
+        loadingPorfileEdit: false,
+        nameUser: user.name,
+        emailUser: user.email,
+        descriptionUser: user.description,
+        imageUser: user.image,
+      },
+    );
+  }
+
+  updateUserProfile = async () => {
+    const {
+      nameUser,
+      emailUser,
+      descriptionUser,
+      imageUser,
+    } = this.state;
+    this.setState({ loadingPorfileEdit: true });
+    await updateUser(
+      {
+        name: nameUser,
+        email: emailUser,
+        image: imageUser,
+        description: descriptionUser,
+      },
+    );
+    this.setState({ loadingPorfileEdit: false, redirect: true });
   }
 
   formValidation = () => {
@@ -41,20 +68,23 @@ class ProfileEdit extends Component {
       descriptionUser,
       imageUser,
     } = this.state;
-    if (!nameUser && !descriptionUser && !imageUser) return true;
-    if (emailUser !== /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/) return true;
-    return false;
+    // const testEmail = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
+    if (!nameUser || !descriptionUser || !imageUser) return true;
+    if (/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/.test(emailUser)) return false;
+    return true;
   };
 
   render() {
     const {
+      redirect,
       loadingPorfileEdit,
-      userEdit: { name },
       nameUser,
       emailUser,
       descriptionUser,
       imageUser,
     } = this.state;
+    if (redirect) return <Redirect to="/profile" />;
+
     if (loadingPorfileEdit) {
       return (
         <div>
@@ -77,7 +107,6 @@ class ProfileEdit extends Component {
               value={ nameUser }
               required
               type="text"
-              placeholder={ name }
               onChange={ this.onInputChange }
             />
           </label>
@@ -120,11 +149,12 @@ class ProfileEdit extends Component {
             />
           </label>
           <button
-            type="submit"
+            type="button"
             disabled={ this.formValidation() }
             data-testid="edit-button-save"
+            onClick={ this.updateUserProfile }
           >
-            Salvar
+            Editar perfil
           </button>
         </form>
       </div>
