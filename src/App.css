@@ -57,3 +57,10 @@
   font-weight: 900;
   text-align: center;
 }
+
+.profile-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
