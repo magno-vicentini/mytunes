@@ -69,7 +69,7 @@ class ProfileEdit extends Component {
       imageUser,
     } = this.state;
     if (!nameUser || !descriptionUser || !imageUser) return true;
-    if (/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/.test(emailUser)) return false;
+    if (/^[a-z0-9]+@+[a-zA-Z0-9]+.+[A-z]/.test(emailUser)) return false;
     return true;
   };
 
