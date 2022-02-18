@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import MusicCard from '../components/MusicCard';
 import Loading from './Loading';
+import '../styles/Favorites.css';
 
 class Favorites extends Component {
   constructor() {
@@ -32,7 +33,7 @@ class Favorites extends Component {
     const { location: { pathname } } = this.props;
     if (loadingSongs) return <Loading />;
     return (
-      <div data-testid="page-favorites">
+      <div data-testid="page-favorites" className="fav-container">
         <Header />
         <label htmlFor="favorita">
           Favorita

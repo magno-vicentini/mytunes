@@ -1,0 +1,28 @@
+body {
+  background-color: black;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 700px;
+  max-height: 1300px;
+  background-color: rgba(0, 0, 0, 0.87);
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(13, 12, 32, 0.87);
+  color: white;
+  border-radius: 25px;
+
+}
+
+.image-music {
+  width: 80%;
+  border-radius: 25px;
+}

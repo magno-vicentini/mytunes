@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
+import '../styles/Profile.css';
 
 class Profile extends Component {
   constructor() {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Loading from './Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import '../styles/Search.css';
 
 class Search extends Component {
   constructor() {
@@ -66,22 +67,24 @@ class Search extends Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <div>
-          <input
-            type="text"
-            data-testid="search-artist-input"
-            name="nameSearch"
-            value={ nameSearch }
-            onChange={ this.onInputChange }
-          />
-          <button
-            type="submit"
-            data-testid="search-artist-button"
-            disabled={ nameSearch.length <= MINLENGTH }
-            onClick={ this.onSearchAlbuns }
-          >
-            Procurar
-          </button>
+        <div className="search-card">
+          <div>
+            <input
+              type="text"
+              data-testid="search-artist-input"
+              name="nameSearch"
+              value={ nameSearch }
+              onChange={ this.onInputChange }
+            />
+            <button
+              type="submit"
+              data-testid="search-artist-button"
+              disabled={ nameSearch.length <= MINLENGTH }
+              onClick={ this.onSearchAlbuns }
+            >
+              Procurar
+            </button>
+          </div>
           <h1>{`Resultado de álbuns de: ${nameSaved}`}</h1>
           <div>{ this.createAlbum() }</div>
         </div>

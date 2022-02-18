@@ -1,11 +1,18 @@
+body {
+  margin: 0 10%;
+  background-color: rgba(7, 31, 7, 0.87);
+}
+
 .container-albums {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card-album {
   align-items: center;
-  border: 2px solid black;
+  border: 5px solid rgba(7, 31, 7, 0.87);
+  box-shadow: 5px 7px 10px rgba(7, 31, 7, 0.87);
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -15,6 +22,7 @@
   margin: 10px;
   padding: 5px;
   width: 250px;
+  text-align: center;
 }
 
 .card-artist {
@@ -39,6 +47,7 @@
 .card-music {
   display: flex;
   justify-content: center;
+  background-color: rgba(7, 31, 7, 0.87);
 }
 
 .track-example {
@@ -56,6 +65,8 @@
   font-size: 30px;
   font-weight: 900;
   text-align: center;
+  background-color: rgba(7, 31, 7, 0.87);
+  color: white;
 }
 
 .profile-card {

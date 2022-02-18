@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
+import '../styles/Login.css';
+import playMusic from '../images/gif-play-music.gif';
 
 class Login extends Component {
   constructor() {
@@ -37,10 +39,12 @@ render() {
   if (loading) return <Loading />;
 
   return (
-    <div data-testid="page-login">
+    <div data-testid="page-login" className="login">
 
-      <div>
-        <p>TrybeTunes</p>
+      <div className="login-container">
+        <p>Mytunes</p>
+        <img src={ playMusic } alt="gif escutando musica" className="image-music" />
+        <p>Sing in </p>
         <form>
           <input
             type="text"
