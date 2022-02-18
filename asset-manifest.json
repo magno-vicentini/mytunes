@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/mytunes/static/css/main.41cfc17e.chunk.css",
+    "main.js": "/mytunes/static/js/main.7d29290a.chunk.js",
+    "main.js.map": "/mytunes/static/js/main.7d29290a.chunk.js.map",
+    "runtime-main.js": "/mytunes/static/js/runtime-main.77474e85.js",
+    "runtime-main.js.map": "/mytunes/static/js/runtime-main.77474e85.js.map",
+    "static/js/2.05ef4a73.chunk.js": "/mytunes/static/js/2.05ef4a73.chunk.js",
+    "static/js/2.05ef4a73.chunk.js.map": "/mytunes/static/js/2.05ef4a73.chunk.js.map",
+    "index.html": "/mytunes/index.html",
+    "static/css/main.41cfc17e.chunk.css.map": "/mytunes/static/css/main.41cfc17e.chunk.css.map",
+    "static/js/2.05ef4a73.chunk.js.LICENSE.txt": "/mytunes/static/js/2.05ef4a73.chunk.js.LICENSE.txt",
+    "static/media/gif-play-music.186b278b.gif": "/mytunes/static/media/gif-play-music.186b278b.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.77474e85.js",
+    "static/js/2.05ef4a73.chunk.js",
+    "static/css/main.41cfc17e.chunk.css",
+    "static/js/main.7d29290a.chunk.js"
+  ]
+}
