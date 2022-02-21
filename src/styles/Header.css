@@ -1,5 +1,6 @@
 .header-container {
   display: flex;
+  color: white;
 }
 
 .header-card {

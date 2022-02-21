@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
 import Loading from './Loading';
+import '../styles/ProfileEdit.css';
 
 class ProfileEdit extends Component {
   constructor() {
@@ -95,7 +96,7 @@ class ProfileEdit extends Component {
     return (
       <div data-testid="page-profile-edit">
         <Header />
-        <form>
+        <form className="profile-edit-card">
           <label htmlFor="nameUser">
             <p>Fique à vontade para usar seu nome social!</p>
             Nome
@@ -113,7 +114,7 @@ class ProfileEdit extends Component {
             Email
             <input
               data-testid="edit-input-email"
-              placeholder="test@test.com"
+              placeholder="example@example.com"
               type="email"
               required
               name="emailUser"
